@@ -2,7 +2,8 @@
 
 Public portfolio demo for a **Melbourne salon** website (Growth pricing tier).
 
-**Live demo:** _(add Vercel URL after deploy)_
+**Live demo:** https://melbourne-salon-demo.vercel.app/  
+**GitHub:** https://github.com/beau-k/melbourne-salon-demo
 
 ## Stack
 
