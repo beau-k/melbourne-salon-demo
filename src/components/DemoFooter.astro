@@ -4,25 +4,25 @@ import { builder, site } from '../lib/site';
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-stone-200 bg-stone-100" aria-label="Demo notice">
+<footer class="border-t border-stone-200 bg-stone-100" aria-label="Sample website notice">
 	<div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
 		<div class="rounded-2xl border border-stone-200 bg-white px-5 py-6 sm:px-8 sm:py-7">
-			<p class="text-xs font-semibold uppercase tracking-wider text-rose-800/80">Sample website · Growth package</p>
+			<p class="text-xs font-semibold uppercase tracking-wider text-rose-800/80">Sample website</p>
 			<p class="mt-2 font-display text-2xl text-stone-900">
-				Demonstration site for {site.name} — not a live business.
+				{site.name} is a sample site — not a live business.
 			</p>
 			<p class="mt-2 max-w-2xl text-sm leading-relaxed text-stone-600">
-				Built to show a mid-tier salon site: service pricing, gallery, team, and a booking request form.
-				Form submissions and phone numbers here are placeholders.
+				Built to show how a salon website can present services, pricing, gallery, and booking requests.
+				Phone numbers and form submissions here are placeholders.
 			</p>
 			<div class="mt-6 flex flex-col gap-4 border-t border-stone-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
 				<div>
-					<p class="text-sm font-medium text-stone-900">Want a site like this for your salon or studio?</p>
-					<p class="mt-1 text-sm text-stone-600">I can tailor branding, services, photos, and real booking details.</p>
+					<p class="text-sm font-medium text-stone-900">Want a site like this for your business?</p>
+					<p class="mt-1 text-sm text-stone-600">I can tailor branding, services, photos, and real contact details.</p>
 				</div>
 				<div class="flex flex-col gap-2 sm:items-end">
 					<a
-						href={`mailto:${builder.email}?subject=${encodeURIComponent('Website enquiry — salon Growth demo')}`}
+						href={`mailto:${builder.email}?subject=${encodeURIComponent('Website enquiry — salon sample site')}`}
 						class="inline-flex items-center justify-center rounded-full bg-stone-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-800"
 					>
 						Email {builder.name}
@@ -37,6 +37,6 @@ const currentYear = new Date().getFullYear();
 				</div>
 			</div>
 		</div>
-		<p class="mt-6 text-center text-xs text-stone-500">&copy; {currentYear} Demo by {builder.name}. Sample content only.</p>
+		<p class="mt-6 text-center text-xs text-stone-500">&copy; {currentYear} Sample by {builder.name}.</p>
 	</div>
 </footer>
