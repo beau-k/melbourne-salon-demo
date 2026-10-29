@@ -1,0 +1,180 @@
+---
+import DemoFooter from '../components/DemoFooter.astro';
+import Layout from '../layouts/Layout.astro';
+import { services, site, team } from '../lib/site';
+
+const gallery = [
+	{
+		src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80',
+		alt: 'Salon interior with styling chairs',
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=80',
+		alt: 'Hair colouring in progress',
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=80',
+		alt: 'Blow-dry styling',
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1633681926022-84c1035cbb1c?auto=format&fit=crop&w=900&q=80',
+		alt: 'Hair wash basin',
+	},
+];
+---
+
+<Layout>
+	<section id="hero" class="relative isolate min-h-[calc(100svh-4.25rem)] overflow-hidden bg-stone-950 text-[#f7f3ee]">
+		<img
+			src="https://images.unsplash.com/photo-1521590834820-8a5e9e79f3e6?auto=format&fit=crop&w=2400&q=80"
+			alt=""
+			class="absolute inset-0 h-full w-full object-cover object-center opacity-70"
+			fetchpriority="high"
+		/>
+		<div class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/75 to-stone-950/30"></div>
+		<div class="relative mx-auto flex min-h-[calc(100svh-4.25rem)] max-w-6xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
+			<p class="text-xs font-semibold uppercase tracking-[0.2em] text-rose-200/90">{site.suburb} · since 2019</p>
+			<h1 class="mt-4 max-w-3xl font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+				{site.name}
+			</h1>
+			<p class="mt-5 max-w-xl text-base leading-relaxed text-stone-200 sm:text-lg">
+				{site.tagline}. Quiet chairs, considered colour, and appointments that actually start on time.
+			</p>
+			<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+				<a
+					href="#book"
+					class="inline-flex items-center justify-center rounded-full bg-[#f7f3ee] px-7 py-3.5 text-sm font-semibold text-stone-950 transition hover:bg-white"
+				>
+					Request a booking
+				</a>
+				<a
+					href="#services"
+					class="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+				>
+					View services
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="services" class="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" aria-labelledby="services-heading">
+		<div class="mx-auto max-w-6xl">
+			<p class="text-xs font-semibold uppercase tracking-[0.18em] text-rose-900/70">Menu</p>
+			<h2 id="services-heading" class="mt-2 font-display text-4xl text-stone-900 sm:text-5xl">Services & pricing</h2>
+			<p class="mt-3 max-w-2xl text-stone-600">
+				Indicative prices for the demo. A real site would lock these to your rate card and link each service into booking.
+			</p>
+			<ul class="mt-10 grid gap-5 sm:grid-cols-2">
+				{
+					services.map((service) => (
+						<li class="border-t border-stone-300 pt-5">
+							<div class="flex items-baseline justify-between gap-4">
+								<h3 class="font-display text-2xl text-stone-900">{service.name}</h3>
+								<p class="shrink-0 text-sm font-semibold text-stone-800">{service.price}</p>
+							</div>
+							<p class="mt-2 text-sm leading-relaxed text-stone-600">{service.blurb}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section id="gallery" class="scroll-mt-24 bg-white px-4 py-20 sm:px-6 lg:px-8" aria-labelledby="gallery-heading">
+		<div class="mx-auto max-w-6xl">
+			<p class="text-xs font-semibold uppercase tracking-[0.18em] text-rose-900/70">Work</p>
+			<h2 id="gallery-heading" class="mt-2 font-display text-4xl text-stone-900 sm:text-5xl">Gallery</h2>
+			<p class="mt-3 max-w-2xl text-stone-600">A visual portfolio sells salon work better than paragraphs. Swap these stock photos for your own cuts and colour.</p>
+			<ul class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+				{
+					gallery.map((image) => (
+						<li class="overflow-hidden rounded-2xl bg-stone-200">
+							<img src={image.src} alt={image.alt} class="aspect-[3/4] h-full w-full object-cover" loading="lazy" />
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section id="team" class="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" aria-labelledby="team-heading">
+		<div class="mx-auto max-w-6xl">
+			<p class="text-xs font-semibold uppercase tracking-[0.18em] text-rose-900/70">People</p>
+			<h2 id="team-heading" class="mt-2 font-display text-4xl text-stone-900 sm:text-5xl">The team</h2>
+			<ul class="mt-10 grid gap-6 sm:grid-cols-3">
+				{
+					team.map((member) => (
+						<li class="rounded-2xl border border-stone-200 bg-white p-6">
+							<p class="font-display text-2xl text-stone-900">{member.name}</p>
+							<p class="mt-1 text-sm font-semibold text-rose-900/80">{member.role}</p>
+							<p class="mt-3 text-sm text-stone-600">{member.focus}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section id="visit" class="scroll-mt-24 border-y border-stone-200 bg-white px-4 py-20 sm:px-6 lg:px-8" aria-labelledby="visit-heading">
+		<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
+			<div>
+				<p class="text-xs font-semibold uppercase tracking-[0.18em] text-rose-900/70">Visit</p>
+				<h2 id="visit-heading" class="mt-2 font-display text-4xl text-stone-900 sm:text-5xl">Find us</h2>
+				<p class="mt-4 text-stone-700">{site.address}</p>
+				<a class="mt-3 inline-block text-sm font-semibold text-rose-900 underline-offset-2 hover:underline" href={site.mapUrl} target="_blank" rel="noreferrer">
+					Open in Google Maps
+				</a>
+				<ul class="mt-8 space-y-2 text-sm text-stone-700">
+					{site.hours.map((row) => (
+						<li class="flex justify-between gap-6 border-b border-stone-100 py-2">
+							<span>{row.day}</span>
+							<span class="font-medium text-stone-900">{row.time}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+			<div class="rounded-2xl bg-stone-100 p-6 sm:p-8">
+				<p class="font-display text-3xl text-stone-900">Prefer to call?</p>
+				<p class="mt-2 text-stone-600">Demo number only — on a real site this would ring the front desk.</p>
+				<a href={site.phoneHref} class="mt-6 inline-flex rounded-full bg-stone-900 px-5 py-3 text-sm font-semibold text-white">
+					{site.phoneDisplay}
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="book" class="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" aria-labelledby="book-heading">
+		<div class="mx-auto max-w-xl">
+			<p class="text-xs font-semibold uppercase tracking-[0.18em] text-rose-900/70">Book</p>
+			<h2 id="book-heading" class="mt-2 font-display text-4xl text-stone-900">Request a time</h2>
+			<p class="mt-3 text-stone-600">
+				Growth-tier booking: clients send preferences, you confirm by phone or SMS. (This demo form does not send anywhere.)
+			</p>
+			<form class="mt-8 space-y-4" action="#" method="post" onsubmit="event.preventDefault(); alert('Demo only — this form does not send bookings.');">
+				<label class="block text-sm font-medium text-stone-800">
+					Name
+					<input type="text" name="name" autocomplete="name" class="mt-1 w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 outline-none ring-rose-800/40 focus:ring-2" />
+				</label>
+				<label class="block text-sm font-medium text-stone-800">
+					Service
+					<select name="service" class="mt-1 w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 outline-none ring-rose-800/40 focus:ring-2">
+						{services.map((service) => <option value={service.name}>{service.name}</option>)}
+					</select>
+				</label>
+				<label class="block text-sm font-medium text-stone-800">
+					Preferred day / time
+					<input type="text" name="when" placeholder="e.g. Sat morning" class="mt-1 w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 outline-none ring-rose-800/40 focus:ring-2" />
+				</label>
+				<label class="block text-sm font-medium text-stone-800">
+					Notes
+					<textarea name="notes" rows="3" class="mt-1 w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 outline-none ring-rose-800/40 focus:ring-2"></textarea>
+				</label>
+				<button type="submit" class="w-full rounded-full bg-stone-900 px-4 py-3 font-semibold text-white transition hover:bg-stone-800 sm:w-auto">
+					Send request
+				</button>
+			</form>
+		</div>
+	</section>
+
+	<DemoFooter />
+</Layout>

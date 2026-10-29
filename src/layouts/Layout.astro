@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import { site } from '../lib/site';
+
+interface Props {
+	title?: string;
+}
+
+const { title = `${site.name} | ${site.suburb} hair salon` } = Astro.props;
+
+const navLinks = [
+	{ href: '#services', label: 'Services' },
+	{ href: '#gallery', label: 'Gallery' },
+	{ href: '#team', label: 'Team' },
+	{ href: '#book', label: 'Book' },
+];
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content={`${site.name} — colour, cuts, and blow-drys in ${site.suburb}. Book a chair or request a preferred time online.`}
+		/>
+		<title>{title}</title>
+	</head>
+	<body class="min-h-screen bg-[#f7f3ee] font-sans text-stone-900 antialiased">
+		<a
+			href="#hero"
+			class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-stone-900 focus:px-4 focus:py-2 focus:font-semibold focus:text-white"
+		>
+			Skip to content
+		</a>
+
+		<header class="sticky top-0 z-50 border-b border-stone-900/10 bg-[#f7f3ee]/90 backdrop-blur-md">
+			<div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:h-[4.25rem] lg:px-8">
+				<a href="#hero" class="font-display text-xl tracking-tight text-stone-900 sm:text-2xl">
+					{site.name}
+				</a>
+				<nav class="hidden items-center gap-7 text-sm font-medium text-stone-700 lg:flex" aria-label="Primary">
+					{navLinks.map((link) => (
+						<a class="transition hover:text-stone-950" href={link.href}>
+							{link.label}
+						</a>
+					))}
+				</nav>
+				<a
+					href="#book"
+					class="rounded-full bg-stone-900 px-4 py-2 text-sm font-semibold text-[#f7f3ee] transition hover:bg-stone-800"
+				>
+					Request a time
+				</a>
+			</div>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
